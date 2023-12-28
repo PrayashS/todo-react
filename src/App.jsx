@@ -17,6 +17,7 @@ function App(){
   }
   console.log(todos)
 
+//Mark Completed
   function toggleTodo(id, completed){
     setTodos(currentTodos => {
       return currentTodos.map(todo => {
@@ -27,7 +28,12 @@ function App(){
       })
     })
   }
-  
+  // Delete Function
+  function deleteTodo(id){
+    setTodos(currentTodos => {
+      return currentTodos.filter(todo => todo.id !== id)
+    })
+  }
   // JSX
   return (
     <>
@@ -48,7 +54,7 @@ function App(){
                 {todo.title}
               </label>
               <button className="btn btn-success">Edit</button>
-              <button className="btn btn-danger">Delete</button>
+              <button className="btn btn-danger" onClick={() => deleteTodo(todo.id)} >Delete</button>
             </li>
           );
         })}
